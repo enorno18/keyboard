@@ -1,0 +1,35 @@
+html {
+    background: lightgrey url(http://www.pianosupermarket.com/wp-content/uploads/2014/02/piano-keyboard.jpg) no-repeat fixed center;
+    background-size: cover;
+    font-size: 14px;
+}
+
+.keyboard {
+    display: flex;
+    flex: 1;
+    min-height: 80vh;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.key {
+    border: .1rem solid black;
+    height: 4rem;
+    width: 4rem;
+    text-align: center;
+    padding: 2rem;
+    margin: 1rem;
+    transition: transform 0.3s ease-out;
+}
+
+kbd {
+    display:block;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.playing {
+    border-color: #d83a3a;
+    transform: scale(1.1);
+
+}

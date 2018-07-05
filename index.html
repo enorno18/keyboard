@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <link rel="stylesheet" href="style.css">
+        <title>Music Keyboard</title>
+    </head>
+    <body>
+
+        <div class="keyboard">
+            <div data-key="65" class="key"> <!--"data-" attribute plus name-->
+                <kbd>A</kbd>
+                <span>Do</span>
+            </div>
+            <div data-key="83" class="key">
+                <kbd>S</kbd>
+                <span>Re</span>
+            </div>
+            <div data-key="68" class="key">
+                <kbd>D</kbd>
+                <span>Mi</span>
+            </div>
+            <div data-key="70" class="key">
+                <kbd>F</kbd>
+                <span>Fa</span>
+            </div>
+            <div data-key="71" class="key">
+                <kbd>G</kbd>
+                <span>So</span>
+            </div>
+            <div data-key="72" class="key">
+                <kbd>H</kbd>
+                <span>La</span>
+            </div>
+            <div data-key="74" class="key">
+                <kbd>J</kbd>
+                <span>Ti</span>
+            </div>
+        </div>
+        <footer>
+            <span>Downloaded on June 5th, 2018</span>
+                <ul>
+                    <li>P: <a href="https://freesound.org/people/ramas26/packs/6140/"></a> by <a href="https://freesound.org/people/ramas26/">ramas26</a></li>
+                </ul>
+        </footer>
+
+        <audio data-key="65" src="piano/c.wav"></audio>
+        <audio data-key="83" src="piano/d.wav"></audio>
+        <audio data-key="68" src="piano/e.wav"></audio>
+        <audio data-key="70" src="piano/f.wav"></audio>
+        <audio data-key="71" src="piano/g.wav"></audio>
+        <audio data-key="72" src="piano/a.wav"></audio>
+        <audio data-key="74" src="piano/b.wav"></audio>
+
+        <script>
+
+        function playTone(e){
+            const tone = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            const press = document.querySelector(`div[data-key="${e.keyCode}"]`);
+            if(!tone) return;
+
+            press.classList.add('playing');
+            tone.currentTime=0;
+            tone.play();
+        }
+
+        function endTransition(e) {
+            if (e.propertyName !== 'transform') return;
+            this.classList.remove('playing');
+
+        }
+
+        const keyArray = Array.from(document.querySelectorAll('.key'));
+        keyArray.forEach(key => key.addEventListener('transitionend', endTransition));
+
+        window.addEventListener('keydown', playTone);
+
+
+
+        </script>
+
+    </body>
+</html>
